@@ -79,8 +79,17 @@ class MunicipioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+       
+       $municipios = Municipio::find($id);
+       $municipios->delete();
+       
+        $municipios = DB::table('tb_municipio')
+        -> join('tb_departamento','tb_municipio.depa_codi','=','tb_departamento.depa_codi')
+        -> select('tb_municipio.*',"tb_departamento.depa_nomb")
+        -> get();
+        
+        return view('municipios.index',['municipios' => $municipios]);
     }
 }
