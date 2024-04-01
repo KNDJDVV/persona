@@ -65,7 +65,12 @@ class MunicipioController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $municipios = Municipio::find($id);
+        $departamento = DB::table('tb_departamento')
+        ->orderBy('depa_nomb')
+        ->get();
+
+        return view('municipios.edit',['municipio' => $municipios, 'departamentos' => $departamento]);
     }
 
     /**
@@ -73,7 +78,17 @@ class MunicipioController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $municipios = Municipio::find($id);
+        $municipios->muni_nomb = $request->name;
+        $municipios->depa_codi = $request->code;
+        $municipios->save();
+
+        $municipios = DB::table('tb_municipio')
+        -> join('tb_departamento','tb_municipio.depa_codi','=','tb_departamento.depa_codi')
+        -> select('tb_municipio.*',"tb_departamento.depa_nomb")
+        -> get();
+        
+        return view('municipios.index',['municipios' => $municipios]);
     }
 
     /**
