@@ -28,14 +28,14 @@
   <label for="Departamento">Departamento:</label>
     <select class="form-select" id="Departamento" name="code" required>
     <option selected disabled value="">Choose one...</option>
-    @foreach ($municipios as $municipio)
-    <option value="{{ $municipio->muni_codi }}">{{$municipio->muni_nomb }}</option>
+    @foreach ($departamento as $departamentos)
+    <option value="{{ $departamentos->depa_codi }}">{{$departamentos->depa_nomb }}</option>
     @endforeach
 </select>
   </div>
   <div class="mt-3">
   <button type="submit" class="btn btn-primary">Save</button>
-  <a href="{{ route('comunas.index') }}" class="btn btn-warning">Cancel</a>
+  <a href="{{ route('municipios.index') }}" class="btn btn-warning">Cancel</a>
 </div>
 </form>
 </div>
