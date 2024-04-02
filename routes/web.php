@@ -29,3 +29,5 @@ Route::delete('/departamento/{departamento}',[DepartamentoController::class, 'de
 Route::get('/departamento/{departamento}/edit',[DepartamentoController::class, 'edit'])->name('departamento.edit');
 Route::put('/departamento/{departamento}',[DepartamentoController::class, 'update'])->name('departamento.update');
 Route::get('/pais',[PaisController::class, 'index'])->name('pais.index');
+Route::post('/pais',[PaisController::class, 'store'])->name('pais.store');
+Route::get('/pais/create', [PaisController::class, 'create'])->name('pais.create');
