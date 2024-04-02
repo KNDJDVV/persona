@@ -23,7 +23,7 @@
   </div>
 
   <div class="mb-3">
-    <label for="name" class="form-label">Departamento</label>
+    <label for="name" class="form-label">Departamentos</label>
     <input type="text" required class="form-control" id="name" placeholder="Departamento name"
     name="name" value="{{ $departamento->depa_nomb }}">
   </div>
